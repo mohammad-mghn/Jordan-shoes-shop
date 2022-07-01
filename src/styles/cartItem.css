@@ -1,0 +1,60 @@
+.cart-item-container {
+  margin-top: 1.25rem;
+  height: 8rem;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  border-radius: 1rem;
+  background-color: #202020;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+.cart-item-container img.shoes-preview {
+  height: 80%;
+  width: 35%;
+  margin: 0 0.5rem;
+}
+.cart-item-container div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  font-size: 1rem;
+  color: #ffffff;
+}
+.cart-item-container div h5 {
+  all: unset;
+  font-size: 1.7rem;
+}
+.cart-item-container div img {
+  width: 50%;
+}
+.cart-item-container div.remove--add {
+  all: unset;
+  position: absolute;
+  left: 55%;
+  top: 70.5%;
+  width: 6rem;
+  height: 1.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #494949;
+  box-shadow: 0 0 5px #090909;
+  border-radius: 0.5rem;
+}
+.cart-item-container .remove--add button {
+  all: unset;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  height: 100%;
+}
+.cart-item-container .remove--add button:first-child :hover {
+  color: #eb0000;
+}
+.cart-item-container .remove--add button:nth-child(2) :hover {
+  color: #00ffd5;
+}
+.cart-item-container .remove--add button:nth-child(3) :hover {
+  color: #ffffff;
+}/*# sourceMappingURL=cartItem.css.map */

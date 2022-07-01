@@ -1,0 +1,67 @@
+@import "./variables/variables.scss";
+.cart-item-container {
+  margin-top: 1.25rem;
+  height: 8rem;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  border-radius: 1rem;
+  background-color: $darkGreyColor;
+  box-shadow: $boxShadow;
+  img.shoes-preview {
+    height: 80%;
+    width: 35%;
+    margin: 0 0.5rem;
+  }
+  div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    font-size: 1rem;
+    color: $whiteColor;
+  }
+  div h5 {
+    all: unset;
+    font-size: 1.7rem;
+  }
+  div img {
+    width: 50%;
+  }
+  div.remove--add {
+    all: unset;
+    position: absolute;
+    left: 55%;
+    top: 70.5%;
+    width: 6rem;
+    height: 1.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: $greyColor;
+    box-shadow: $boxShadowLight;
+    border-radius: 0.5rem;
+  }
+  .remove--add button {
+    all: unset;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    height: 100%;
+  }
+  .remove--add button:first-child {
+    :hover {
+      color: $darkRedColor;
+    }
+  }
+  .remove--add button:nth-child(2) {
+    :hover {
+      color: $greenColor;
+    }
+  }
+  .remove--add button:nth-child(3) {
+    :hover {
+      color: $whiteColor;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@import "./variables/variables.scss";
+
+.products-page {
+  min-height: calc(100vh - 7rem);
+  background-color: $backgroundColor;
+  padding: 7rem 2.5% 0 2.5%;
+}

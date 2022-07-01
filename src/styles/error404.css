@@ -1,0 +1,23 @@
+.error-404 {
+  position: relative;
+  background: url("../assists/home-background.png");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+.back-drop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-content: center;
+  font-size: 650%;
+  text-align: center;
+  opacity: 0.85;
+  color: var(--redColor);
+  background-color: var(--backgroundColor);
+  backdrop-filter: blur(45px);
+}

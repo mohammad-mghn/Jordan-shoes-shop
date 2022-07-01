@@ -1,0 +1,116 @@
+.product {
+  padding: 1rem;
+  height: 28rem;
+  width: 25rem;
+  border-radius: 1rem;
+  border: 0.1rem solid var(--darkGreyColor);
+  background-color: var(--backgroundColor);
+  font-family: "Goldman";
+  margin-bottom: 2rem;
+}
+.home-products-title {
+  position: relative;
+  margin-bottom: 2rem;
+  color: var(--greyColor);
+}
+.home-products-title::after {
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 0.15rem;
+  border-radius: 1rem;
+  background-color: var(--darkGreyColor);
+}
+.shoes-image {
+  position: relative;
+}
+.shoes-image::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 0.15rem;
+  border-radius: 1rem;
+  background-color: var(--darkGreyColor);
+}
+.shoes-preview {
+  width: 80%;
+  margin-left: 10%;
+}
+.name--model--cost {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  color: var(--whiteColor);
+}
+.cost {
+  font-size: 1.75rem;
+}
+.stars--colors {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--greyColor);
+}
+.stars {
+  width: 6.5rem;
+}
+.colors {
+  font-size: 0.8rem;
+}
+.product-button {
+  margin-top: 1rem;
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 3px solid var(--redColor);
+  background-color: transparent;
+  color: var(--redColor);
+  font-family: "Goldman";
+  font-size: 1.1rem;
+}
+.product-button.loading-button {
+  border: 3px solid var(--darkGreyColor);
+  color: var(--greyColor);
+  animation: fading 2s ease-in infinite;
+}
+@keyframes fading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.product-button.added-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  color: var(--greyColor);
+  border: 3px solid var(--darkGreyColor);
+}
+.added-to-cart-icon-contianer {
+  position: relative;
+  cursor: pointer;
+}
+.added-to-cart-icon-contianer::before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: -30%;
+  width: 0.15rem;
+  height: 90%;
+  border-radius: 1rem;
+  background-color: var(--greyColor);
+  cursor: default;
+}

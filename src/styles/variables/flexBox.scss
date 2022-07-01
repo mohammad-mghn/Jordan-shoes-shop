@@ -1,0 +1,112 @@
+.flex {
+  @extend %display-flex;
+}
+
+.expand {
+  flex: 1;
+}
+
+%expand {
+  flex: 1 0 0;
+}
+
+// will align the content dead center
+%container-center {
+  @extend %display-flex;
+  @extend %flex-direction-column;
+  @extend %justify-content-center;
+  @extend %align-items-center;
+}
+.container-center {
+  @extend %container-center;
+}
+
+%flex-column {
+  @extend %display-flex;
+  @extend %flex-direction-column;
+}
+.flex-column {
+  @extend %flex-column;
+}
+
+// will align the content vertically centrally and horizontal from the left (with no margin)
+%flex-row-start-center {
+  @extend %display-flex;
+  @extend %flex-direction-row;
+  @extend %justify-content-flex-start;
+  @extend %align-items-center;
+}
+.flex-row-start-center {
+  @extend %flex-row-start-center;
+}
+
+// will align the content vertically centrally and horizontal centrally (with no margin)
+%flex-center-center {
+  @extend %display-flex;
+  @extend %flex-direction-row;
+  @extend %justify-content-center;
+  @extend %align-items-center;
+}
+.flex-center-center {
+  @extend %flex-center-center;
+}
+
+// also, will align the content vertically centrally and horizontal will space out toward the edges
+%flex-center-space-between {
+  @extend %display-flex;
+  @extend %flex-direction-row;
+  @extend %justify-content-space-between;
+  @extend %align-items-center;
+}
+.flex-center-space-between {
+  @extend %flex-center-space-between;
+}
+
+// will align the content vertically centrally and horizontalitally will space out accross the available space
+%flex-center-space-around {
+  @extend %display-flex;
+  @extend %flex-direction-row;
+  @extend %justify-content-space-around;
+  @extend %align-items-center;
+}
+.flex-center-space-around {
+  @extend %flex-center-space-around;
+}
+
+// Will align multiple items vertically and horizontally
+%flex-center-center-wrap-stretch {
+  @extend %display-flex;
+  @extend %align-items-center;
+  @extend %justify-content-center;
+  @extend %flex-wrap-wrap;
+  @extend %align-content-stretch;
+}
+.flex-center-center-wrap-stretch {
+  @extend %flex-center-center-wrap-stretch;
+}
+
+// Will allow for multipe columns filling the content area
+%flex-row-space-around-wrap-stretch {
+  @extend %display-flex;
+  @extend %flex-direction-row;
+  @extend %justify-content-space-around;
+  @extend %flex-wrap-wrap;
+  @extend %align-items-stretch;
+}
+.flex-row-space-around-wrap-stretch {
+  @extend %flex-row-space-around-wrap-stretch;
+}
+
+// Self
+.align-self-flex-end {
+  @extend %align-self-flex-end;
+}
+.align-self-auto {
+  @extend %align-self-auto;
+}
+.left {
+  @extend %align-content-flex-start;
+}
+.right {
+  margin-left: auto;
+}
