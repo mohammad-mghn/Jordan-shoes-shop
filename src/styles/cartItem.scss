@@ -21,19 +21,36 @@
     font-size: 1rem;
     color: $whiteColor;
   }
+  div div:nth-child(2) {
+    height: 1.5rem;
+    width: 11rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  div div h6 {
+    font-size: 0.8rem;
+    max-width: 2.5rem;
+    text-align: center;
+    color: $greyColor;
+    overflow: hidden;
+  }
+  div div img {
+    width: 50%;
+  }
   div h5 {
     all: unset;
     font-size: 1.7rem;
-  }
-  div img {
-    width: 50%;
+    max-width: 6rem;
+    overflow: hidden;
   }
   div.remove--add {
     all: unset;
     position: absolute;
-    left: 55%;
-    top: 70.5%;
-    width: 6rem;
+    left: 58%;
+    top: 72.5%;
+    width: 5rem;
     height: 1.85rem;
     display: flex;
     align-items: center;
@@ -41,6 +58,7 @@
     color: $greyColor;
     box-shadow: $boxShadowLight;
     border-radius: 0.5rem;
+    transition: all 1s;
   }
   .remove--add button {
     all: unset;

@@ -6,6 +6,7 @@
   background-size: cover;
   background-position: center;
   background-position: top;
+  background-attachment: fixed;
 }
 .landing-shoes-details {
   position: absolute;

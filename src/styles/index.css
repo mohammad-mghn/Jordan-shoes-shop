@@ -23,11 +23,12 @@ code {
   --backgroundColor: #090909;
   --backgroundGreyColor: rgba(50, 50, 50, 0.58);
 }
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 8px;
   background-color: var(--backgroundColor);
+  opacity: 0;
 }
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   border-radius: 1rem;
   background-color: var(--greyColor);
 }

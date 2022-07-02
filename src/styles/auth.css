@@ -1,0 +1,140 @@
+.auth-main-container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  background-image: url("../assists/home-background.png");
+  background-position: center;
+  background-size: cover;
+  color: #e70000;
+  box-sizing: border-box;
+}
+.auth-main-container .auth-contianer {
+  position: relative;
+  height: 32rem;
+  width: 30rem;
+  overflow: hidden;
+}
+.auth-main-container form {
+  box-sizing: border-box;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(50, 50, 50, 0.58);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  border: 3px solid var(--redColor);
+  text-align: center;
+}
+.auth-main-container form h1 {
+  margin: 0;
+  font-size: 1.65rem;
+  color: #ffffff;
+}
+.auth-main-container form p {
+  font-size: 0.9rem;
+  padding: 0 3rem;
+  margin-bottom: 1rem;
+  color: #999999;
+}
+.auth-main-container form div {
+  position: relative;
+  width: 100%;
+}
+.auth-main-container form input {
+  all: unset;
+  box-sizing: border-box;
+  width: calc(100% - 1rem);
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: start;
+  font-size: 1.25rem;
+  color: #999999;
+  border: 3px solid #494949;
+  border-radius: 0.5rem;
+}
+.auth-main-container form input ::-moz-placeholder {
+  color: #494949;
+}
+.auth-main-container form input :-ms-input-placeholder {
+  color: #494949;
+}
+.auth-main-container form input ::placeholder {
+  color: #494949;
+}
+.auth-main-container form label {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  color: #494949;
+  cursor: pointer;
+}
+.auth-main-container form button {
+  all: unset;
+  width: 95%;
+  height: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #090909;
+  background-color: #494949;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.loginAndSignup-button-enter {
+  transform: scale(0);
+  opacity: 0;
+  transition: all 300ms;
+}
+
+.loginAndSignup-button-enter-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 300ms;
+}
+
+.loginAndSignup-button-exit {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 300ms;
+}
+
+.loginAndSignup-button-exit-active {
+  transition: all 300ms;
+  opacity: 0;
+  transform: scale(0);
+}
+
+@media screen and (max-width: 501px) {
+  .auth-main-container .auth-contianer {
+    height: 70vh;
+    width: 95vw;
+  }
+  .auth-main-container form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .auth-main-container form h1 {
+    font-size: 4.5vw;
+  }
+  .auth-main-container form p {
+    font-size: 3vw;
+  }
+  .auth-main-container form input {
+    font-size: 4vw;
+    padding: 3vw;
+    height: 10vw;
+  }
+  .auth-main-container form label {
+    transform: translateY(-10%);
+    font-size: 3vw;
+  }
+  .auth-main-container form button {
+    height: 10vw;
+    font-size: 3.5vw;
+  }
+}/*# sourceMappingURL=auth.css.map */

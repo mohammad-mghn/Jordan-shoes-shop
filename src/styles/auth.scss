@@ -1,0 +1,131 @@
+@import "./variables/variables.scss";
+.auth-main-container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  background-image: url("../assists/home-background.png");
+  background-position: center;
+  background-size: cover;
+  color: $redColor;
+  box-sizing: border-box;
+  .auth-contianer {
+    position: relative;
+    height: 32rem;
+    width: 30rem;
+    overflow: hidden;
+  }
+  form {
+    box-sizing: border-box;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: $backgroundGreyColor;
+    backdrop-filter: blur(20px);
+    border: 3px solid var(--redColor);
+    text-align: center;
+    h1 {
+      margin: 0;
+      font-size: 1.65rem;
+      color: $whiteColor;
+    }
+    p {
+      font-size: 0.9rem;
+      padding: 0 3rem;
+      margin-bottom: 1rem;
+      color: $lightGreyColor;
+    }
+    div {
+      position: relative;
+      width: 100%;
+    }
+    input {
+      all: unset;
+      box-sizing: border-box;
+      width: calc(100% - 1rem);
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: start;
+      font-size: 1.25rem;
+      color: $lightGreyColor;
+      border: 3px solid $greyColor;
+      border-radius: 0.5rem;
+      ::placeholder {
+        color: $greyColor;
+      }
+    }
+    label {
+      position: absolute;
+      top: 20%;
+      right: 5%;
+      color: $greyColor;
+      cursor: pointer;
+    }
+    button {
+      all: unset;
+      width: 95%;
+      height: 3rem;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      color: $backgroundColor;
+      background-color: $greyColor;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+  }
+}
+.loginAndSignup-button-enter {
+  transform: scale(0);
+  opacity: 0;
+  transition: all 300ms;
+}
+.loginAndSignup-button-enter-active {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 300ms;
+}
+.loginAndSignup-button-exit {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 300ms;
+}
+.loginAndSignup-button-exit-active {
+  transition: all 300ms;
+  opacity: 0;
+  transform: scale(0);
+}
+@media screen and (max-width: 501px) {
+  .auth-main-container {
+    .auth-contianer {
+      height: 70vh;
+      width: 95vw;
+    }
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      h1 {
+        font-size: 4.5vw;
+      }
+      p {
+        font-size: 3vw;
+      }
+      input {
+        font-size: 4vw;
+        padding: 3vw;
+        height: 10vw;
+      }
+      label{
+        transform: translateY(-10%);
+        font-size: 3vw;
+      }
+      button {
+        height: 10vw;
+        font-size: 3.5vw;
+      }
+    }
+  }
+}
