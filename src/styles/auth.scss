@@ -11,14 +11,16 @@
   box-sizing: border-box;
   .auth-contianer {
     position: relative;
-    height: 32rem;
+    height: 39rem;
     width: 30rem;
+    display: grid;
+    place-items: center;
     overflow: hidden;
   }
   form {
     box-sizing: border-box;
     position: absolute;
-    height: 100%;
+    height: fit-content;
     width: 100%;
     padding: 1rem;
     border-radius: 1rem;
@@ -30,6 +32,9 @@
       margin: 0;
       font-size: 1.65rem;
       color: $whiteColor;
+    }
+    h4 {
+      margin: 0 0 1rem 0;
     }
     p {
       font-size: 0.9rem;
@@ -73,6 +78,10 @@
       background-color: $greyColor;
       border-radius: 0.5rem;
       cursor: pointer;
+    }
+    button.disabled {
+      opacity: 0.3;
+      cursor: default;
     }
   }
 }
@@ -118,7 +127,7 @@
         padding: 3vw;
         height: 10vw;
       }
-      label{
+      label {
         transform: translateY(-10%);
         font-size: 3vw;
       }

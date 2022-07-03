@@ -4,12 +4,13 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     isLoggedIn: false,
-    user: {
-      id: "1",
-      name: "vito",
-      email: "vito.mohagheghian@gmail.com",
-      password: "vitopwpw",
-      cart: {},
+    user: {},
+  },
+  reducers: {
+    Login: (state, action) => {
+      const user = action.payload;
+      state.user = user;
+      state.isLoggedIn = true;
     },
   },
 });
