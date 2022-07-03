@@ -30,8 +30,8 @@
   justify-content: space-between;
 }
 .cart-item-container div div h6 {
-  font-size: 0.8rem;
-  max-width: 2.5rem;
+  max-width: 40%;
+  font-size: 0.7rem;
   text-align: center;
   color: #494949;
   overflow: hidden;

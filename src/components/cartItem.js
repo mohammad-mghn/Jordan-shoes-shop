@@ -28,6 +28,16 @@ const CartItem = (props) => {
     dispatch(cartActions.removeItemFromCart(id));
   };
 
+  const shortenPrice = (price) => {
+    if (price > 1000000) {
+      return (price / 1000000).toFixed(1) + "M";
+    } else if (price >= 1000) {
+      return (price / 1000).toFixed(1) + "K";
+    } else {
+      return price;
+    }
+  };
+
   return (
     <div className="cart-item-container">
       <img src={ShoesImage} alt="" className="shoes-preview" />
@@ -42,7 +52,7 @@ const CartItem = (props) => {
           <h6>{color.toUpperCase()}</h6>
           <h6>{quantity}x</h6>
         </div>
-        <h5>{totalPrice}$</h5>
+        <h5>{shortenPrice(totalPrice)}$</h5>
         <div className="remove--add">
           <button>
             <RemoveRoundedIcon onClick={decreament} sx={{ fontSize: "150%" }} />

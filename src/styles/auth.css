@@ -1,5 +1,5 @@
 .auth-main-container {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: grid;
   place-items: center;
@@ -118,6 +118,11 @@
   transform: scale(0);
 }
 
+@media screen and (max-width: 900px) {
+  .auth-main-container {
+    background-image: url("../assists/home-background-mobile.png");
+  }
+}
 @media screen and (max-width: 501px) {
   .auth-main-container {
     height: 100vh;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,7 +41,7 @@ const Product = (props) => {
 
   const existingProductInCart = cart.find((cartItem) => cartItem.id === id);
 
-  const color = "blue";
+  const [color, setColor] = useState(colors[0]);
 
   const dispatch = useDispatch();
 
@@ -64,6 +64,16 @@ const Product = (props) => {
     );
   };
 
+  const shortenPrice = (price) => {
+    if (price > 1000000) {
+      return (price / 1000000).toFixed(1) + "M";
+    } else if (price >= 1000) {
+      return (price / 1000).toFixed(1) + "K";
+    } else {
+      return price;
+    }
+  };
+
   const showCarthandler = () => dispatch(cartActions.showCart());
   return (
     <div className="product">
@@ -83,46 +93,54 @@ const Product = (props) => {
           <br />
           {name}
         </div>
-        <div className="cost">{price}$</div>
+        <div className="cost">{shortenPrice(price)}$</div>
       </div>
       <div className="stars--colors">
         <img src={ThreeStars} alt="" className="stars" />
         <div className="colors">
-          {colors.map((color) => (
-            <span className="color" key={color}>
-              {color.toUpperCase()}{" "}
+          {colors.map((colorItem) => (
+            <span
+              className={`color ${color === colorItem && "color-selected"}`}
+              key={colorItem}
+              onClick={() => {
+                setColor(colorItem);
+              }}
+            >
+              {colorItem.toUpperCase()}
             </span>
           ))}
         </div>
       </div>
-      <CSSTransition
-        in={existingProductInCart}
-        timeout={300}
-        classNames="product-button"
-        unmountOnExit
-      >
-        <button className="product-button added-button">
-          <div className="added-to-cart-text">ADDED TO CART</div>
-          <div className="added-to-cart-icon-contianer">
-            <ShoppingCartRoundedIcon onClick={showCarthandler} />
-          </div>
-        </button>
-      </CSSTransition>
-      <CSSTransition
-        in={!existingProductInCart}
-        timeout={300}
-        classNames="product-button"
-        unmountOnExit
-      >
-        <button
-          className="product-button"
-          onClick={() => {
-            addToCartHandler();
-          }}
+      <div className="poduct-button-container">
+        <CSSTransition
+          in={existingProductInCart}
+          timeout={300}
+          classNames="product-button"
+          unmountOnExit
         >
-          <div className="add-to-cart-text">ADD TO CART</div>
-        </button>
-      </CSSTransition>
+          <button className="product-button added-button">
+            <div className="added-to-cart-text">ADDED TO CART</div>
+            <div className="added-to-cart-icon-contianer">
+              <ShoppingCartRoundedIcon onClick={showCarthandler} />
+            </div>
+          </button>
+        </CSSTransition>
+        <CSSTransition
+          in={!existingProductInCart}
+          timeout={300}
+          classNames="product-button"
+          unmountOnExit
+        >
+          <button
+            className="product-button"
+            onClick={() => {
+              addToCartHandler();
+            }}
+          >
+            <div className="add-to-cart-text">ADD TO CART</div>
+          </button>
+        </CSSTransition>
+      </div>
     </div>
   );
 };
