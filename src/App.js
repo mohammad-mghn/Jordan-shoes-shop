@@ -28,7 +28,7 @@ function App() {
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  const showCartComponent = useSelector((state) => state.cart.showCart);
+  const showCart = useSelector((state) => state.cart.showCart);
 
   const itemsList = useSelector((state) => state.cart.itemsList);
 
@@ -105,14 +105,14 @@ function App() {
           <Navbar />
 
           <CSSTransition
-            in={false}
+            in={showCart}
             timeout={300}
             classNames="cart"
             unmountOnExit
           >
             <Cart />
           </CSSTransition>
-          {showCartComponent && (
+          {showCart && (
             <div className="close-section" onClick={showCarthandler}></div>
           )}
 
