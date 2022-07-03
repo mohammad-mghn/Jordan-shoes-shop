@@ -28,7 +28,7 @@ function App() {
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  const showCart = useSelector((state) => state.cart.showCart);
+  const showCartComponent = useSelector((state) => state.cart.showCart);
 
   const itemsList = useSelector((state) => state.cart.itemsList);
 
@@ -42,24 +42,33 @@ function App() {
 
   const location = useLocation();
   useEffect(() => {
-    setLoggedInUser(localStorage.getItem("jordan-shop-user") ? true : false);
-    dispatch(
-      authActions.IsLoggedIn(
-        localStorage.getItem("jordan-shop-user") ? true : false
-      )
-    );
-    dispatch(
-      cartActions.setItemsList(
-        JSON.parse(localStorage.getItem("jordan-shop-user"))
-      )
-    );
-  }, [localStorage]);
-  useEffect(() => {
-    console.log(itemsList, "hello");
-    const newUser = {
-      ...user,
-      cartItemsList: itemsList,
+    const fetchData = async () => {
+      const allUsers = await fetch(
+        "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json"
+      );
+      var usersList = await allUsers.json();
+
+      const localUsersList = usersList ? usersList : [];
+
+      const existingUser = localUsersList.find(
+        (item) =>
+          item.email ===
+          JSON.parse(localStorage.getItem("jordan-shop-user")).email
+      );
+
+      if (existingUser) {
+        dispatch(authActions.Login(existingUser));
+        dispatch(
+          cartActions.setItemsList(
+            existingUser.cartItemsList ? existingUser.cartItemsList : []
+          )
+        );
+      }
     };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       const allUsers = await fetch(
         "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json"
@@ -91,19 +100,19 @@ function App() {
 
   return (
     <>
-      {LoggedInUser && (
+      {isLoggedIn ? (
         <AnimatedPage>
           <Navbar />
 
           <CSSTransition
-            in={showCart}
+            in={false}
             timeout={300}
             classNames="cart"
             unmountOnExit
           >
             <Cart />
           </CSSTransition>
-          {showCart && (
+          {showCartComponent && (
             <div className="close-section" onClick={showCarthandler}></div>
           )}
 
@@ -118,8 +127,7 @@ function App() {
             </Routes>
           </AnimatePresence>
         </AnimatedPage>
-      )}
-      {!LoggedInUser && (
+      ) : (
         <AnimatedPage>
           <AnimatePresence exitBeforeEnter>
             <Routes key={location.pathname} location={location}>

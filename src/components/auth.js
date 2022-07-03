@@ -27,6 +27,7 @@ const Auth = (props) => {
   };
 
   const loginAndSignupHandler = () => {
+    setError(null);
     setIsLoginPage((prevValue) => !prevValue);
   };
 
