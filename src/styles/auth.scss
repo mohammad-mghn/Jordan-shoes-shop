@@ -107,6 +107,7 @@
 }
 @media screen and (max-width: 501px) {
   .auth-main-container {
+    height: fit-content;
     .auth-contianer {
       height: 70vh;
       width: 95vw;

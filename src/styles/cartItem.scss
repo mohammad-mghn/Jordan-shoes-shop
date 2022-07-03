@@ -2,7 +2,7 @@
 .cart-item-container {
   margin-top: 1.25rem;
   height: 8rem;
-  width: 20rem;
+  width: 97%;
   display: flex;
   align-items: center;
   border-radius: 1rem;
@@ -48,7 +48,7 @@
   div.remove--add {
     all: unset;
     position: absolute;
-    left: 58%;
+    left: 56%;
     top: 72.5%;
     width: 5rem;
     height: 1.85rem;
@@ -80,6 +80,54 @@
   .remove--add button:nth-child(3) {
     :hover {
       color: $whiteColor;
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  .cart-item-container {
+    padding: 2.5vw 0;
+    width: 98%;
+    height: fit-content;
+    img.shoes-preview {
+      width: 25vw;
+      height: 25vw;
+    }
+    div {
+      font-size: 3.5vw;
+    }
+    div div:nth-child(2) {
+      height: 4vw;
+      width: 45.5vw;
+    }
+    div div h6 {
+      font-size: 3vw;
+      max-width: 14vw;
+    }
+    div div img {
+      width: 20vw;
+    }
+    div h5 {
+      font-size: 6vw;
+      max-width: 22vw;
+      overflow-x: auto;
+    }
+    div h5::-webkit-scrollbar {
+      height: 3px;
+    }
+    div.remove--add {
+      all: unset;
+      position: absolute;
+      left: 49%;
+      top: 69%;
+      width: 52.5%;
+      height: 32.5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      color: $greyColor;
+      box-shadow: $boxShadowLight;
+      border-radius: 0.5rem;
+      transition: all 1s;
     }
   }
 }

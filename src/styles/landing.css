@@ -64,18 +64,20 @@
   line-height: 1.3rem;
 }
 @media screen and (max-width: 900px) {
+  .landing-container {
+    background-image: url("../assists/home-background-mobile.png");
+  }
   .landing-cost {
     font-size: 1.5rem;
+    color: var(--greyColor);
   }
   .landing-shoes-details {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: -1.5rem;
+    margin-left: -3.5rem;
     font-size: 0.6rem;
-    width: 45vw;
-    overflow: hidden;
-    background-color: aqua;
+    width: 50vw;
   }
   .description-container {
     display: none;
@@ -85,6 +87,7 @@
     font-size: 0.8rem;
   }
   .otherColorImage {
-    width: 16rem;
+    width: 60vw;
+    
   }
 }

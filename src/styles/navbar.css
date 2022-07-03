@@ -86,7 +86,7 @@
   .navbar-contianer-mobile {
     box-sizing: border-box;
     position: fixed;
-    height: 100vh;
+    height: 100%;
     width: 12rem;
     right: 0;
     top: 0;
@@ -98,7 +98,7 @@
     backdrop-filter: blur(20px);
     background-color: var(--backgroundGreyColor);
     border-left: 3px solid var(--darkRedColor);
-    padding: 3rem 0;
+    padding: 25% 0;
   }
   .navbar-logo-mobile {
     width: 9rem;

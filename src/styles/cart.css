@@ -2,7 +2,7 @@
   position: fixed;
   top: 5vh;
   right: 2.5%;
-  z-index: 2;
+  z-index: 3;
   height: 85vh;
   width: 20rem;
   padding: 1rem;
@@ -79,4 +79,10 @@
   color: var(--greyColor);
   border: 2px solid var(--greyColor);
   cursor: pointer;
+}
+@media screen and (max-width: 380px) {
+  .cart-contianer {
+    width: 80vw;
+    right: 5vw;
+  }
 }

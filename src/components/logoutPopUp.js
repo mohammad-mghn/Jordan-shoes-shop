@@ -20,7 +20,7 @@ const LogoutPopUp = ({ logoutPopUpHandler }) => {
           <button onClick={logoutPopUpHandler}>CANCEL</button>
         </div>
       </section>
-      <div className="logout-pop-up-close"></div>
+      <div className="logout-pop-up-close" onClick={logoutPopUpHandler}></div>
     </>
   );
 };

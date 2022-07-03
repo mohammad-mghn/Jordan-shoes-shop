@@ -45,13 +45,16 @@ const CartItem = (props) => {
         <h5>{totalPrice}$</h5>
         <div className="remove--add">
           <button>
-            <RemoveRoundedIcon onClick={decreament} />
+            <RemoveRoundedIcon onClick={decreament} sx={{ fontSize: "150%" }} />
           </button>
           <button>
-            <AddRoundedIcon onClick={increament} />
+            <AddRoundedIcon onClick={increament} sx={{ fontSize: "150%" }} />
           </button>
           <button>
-            <DeleteOutlineRoundedIcon onClick={deleteItem} />
+            <DeleteOutlineRoundedIcon
+              onClick={deleteItem}
+              sx={{ fontSize: "150%" }}
+            />
           </button>
         </div>
       </div>
