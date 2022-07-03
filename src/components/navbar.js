@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import { cartActions } from "../store/cart-slice";
 
 import LinkNavbar from "../elements/link";
@@ -14,6 +14,8 @@ import Logo from "../assists/logo.png";
 import Avatar from "../assists/avatar.png";
 const Navbar = () => {
   const dispatch = useDispatch();
+
+  const itemsListLength = useSelector((state) => state.cart.itemsList.length);
 
   const links = [
     { path: "/", text: "HOME" },
@@ -58,7 +60,11 @@ const Navbar = () => {
       </div>
       <div className="cart--avatar">
         <SearchRoundedIcon />
-        <ShoppingCartRoundedIcon onClick={showCarthandler} />
+        <ShoppingCartRoundedIcon
+          onClick={showCarthandler}
+          data-number={itemsListLength}
+          className="cart-icon"
+        />
         <img src={Avatar} alt="" className="avatar" />
       </div>
     </div>

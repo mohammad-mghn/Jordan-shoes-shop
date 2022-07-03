@@ -61,3 +61,10 @@
 .avatar {
   width: 1.75rem;
 }
+.acrt-icon::after {
+  content: attr(data-number);
+  position: relative;
+  top: 0;
+  left: 100%;
+  background-color: aqua;
+}

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import { CSSTransition } from "react-transition-group";
 import { cartActions } from "./store/cart-slice";
 import { AnimatePresence } from "framer-motion";
+import { authActions } from "./store/auth-slice";
 
 import HomeLayout from "./components/homeLayout";
 import Navbar from "./components/navbar";
@@ -21,16 +24,74 @@ import ProductsLayout from "./components/productsLayout";
 import Error404 from "./components/error404";
 
 function App() {
+  const user = useSelector((state) => state.auth.user);
+
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const showCart = useSelector((state) => state.cart.showCart);
 
+  const itemsList = useSelector((state) => state.cart.itemsList);
+
   const dispatch = useDispatch();
+
+  const [LoggedInUser, setLoggedInUser] = useState(
+    JSON.parse(localStorage.getItem("jordan-shop-user")) ? true : false
+  );
+
   const showCarthandler = () => dispatch(cartActions.showCart());
+
   const location = useLocation();
+  useEffect(() => {
+    setLoggedInUser(localStorage.getItem("jordan-shop-user") ? true : false);
+    dispatch(
+      authActions.IsLoggedIn(
+        localStorage.getItem("jordan-shop-user") ? true : false
+      )
+    );
+    dispatch(
+      cartActions.setItemsList(
+        JSON.parse(localStorage.getItem("jordan-shop-user"))
+      )
+    );
+  }, [localStorage]);
+  useEffect(() => {
+    console.log(itemsList, "hello");
+    const newUser = {
+      ...user,
+      cartItemsList: itemsList,
+    };
+    const fetchData = async () => {
+      const allUsers = await fetch(
+        "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json"
+      );
+      var usersList = await allUsers.json();
+
+      const localUsersList = usersList ? usersList : [];
+
+      localUsersList.forEach((item) => {
+        if (item.email === user.email) {
+          item.cartItemsList = itemsList;
+          return item;
+        } else {
+          return item;
+        }
+      });
+      console.log(localUsersList);
+
+      const fetchUser = await fetch(
+        "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(localUsersList),
+        }
+      );
+    };
+    fetchData();
+  }, [itemsList]);
+
   return (
     <>
-      {isLoggedIn && (
+      {LoggedInUser && (
         <AnimatedPage>
           <Navbar />
 
@@ -58,7 +119,7 @@ function App() {
           </AnimatePresence>
         </AnimatedPage>
       )}
-      {!isLoggedIn && (
+      {!LoggedInUser && (
         <AnimatedPage>
           <AnimatePresence exitBeforeEnter>
             <Routes key={location.pathname} location={location}>

@@ -6,9 +6,9 @@ import RemoveRedEyeRoundedIcon from "@mui/icons-material/RemoveRedEyeRounded";
 
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../store/auth-slice";
+import { cartActions } from "../store/cart-slice";
 
 import "../styles/auth.css";
-import { padding } from "@mui/system";
 
 const Auth = (props) => {
   const dispatch = useDispatch();
@@ -78,6 +78,15 @@ const Auth = (props) => {
         if (existingUser) {
           if (existingUser.password === logInRef.current[1].value) {
             dispatch(authActions.Login(existingUser));
+            dispatch(
+              cartActions.setItemsList(
+                existingUser.cartItemsList ? existingUser.cartItemsList : []
+              )
+            );
+            localStorage.setItem(
+              "jordan-shop-user",
+              JSON.stringify(existingUser)
+            );
           } else {
             throw new Error("PASSWORD IS NOT CORRECT.");
           }
@@ -89,24 +98,13 @@ const Auth = (props) => {
           name: signUpRef.current[0].value,
           email: signUpRef.current[1].value,
           password: signUpRef.current[2].value,
-          cartItemsList: [
-            {
-              quantity: 1,
-              id: "1",
-              name: "Jordan",
-              manifactor: "sdf",
-              price: 123,
-              totalPrice: 123,
-              stars: 3,
-              color: "Red",
-              length: 0,
-            },
-          ],
+          cartItemsList: [],
         };
+
+        localStorage.setItem("jordan-shop-user", JSON.stringify(user));
 
         localUsersList.push(user);
 
-        console.log(localUsersList, user);
         const fetchUser = await fetch(
           "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json",
           {
