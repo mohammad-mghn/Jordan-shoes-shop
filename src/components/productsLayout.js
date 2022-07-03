@@ -3,7 +3,7 @@ import React from "react";
 import Products from "./products";
 import AnimatedPage from "./animatedPage";
 
-import "../styles/productsLayout.css";
+import "../styles/layout.css";
 
 const ProductsLayout = () => {
   return (

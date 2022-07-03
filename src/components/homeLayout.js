@@ -4,23 +4,14 @@ import Landing from "./landing";
 import Products from "./products";
 import AnimatedPage from "./animatedPage";
 
+import "../styles/layout.css";
+
 const HomeLayout = () => {
   return (
     <AnimatedPage>
-      <div
-        style={{
-          position: "relative",
-          backgroundColor: "var(--backgroundColor)",
-        }}
-      >
+      <div className="home-layout-container">
         <Landing />
-        <div
-          style={{
-            width: "95%",
-            margin: "2rem 2.5% 0 2.5%",
-            minHeight: "100vh",
-          }}
-        >
+        <div className="home-layout-products">
           <h2 className="home-products-title">Products</h2>
           <Products />
         </div>

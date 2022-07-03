@@ -148,3 +148,31 @@
   position: relative;
   z-index: 1;
 }
+@media screen and (max-width: 500px) {
+  .product{
+    width: 80vw;
+    height: fit-content;
+  }
+  .shoes-image{
+    height: 60vw;
+  }
+  .name--model--cost{
+    font-size: 3vw;
+  }
+  .cost{
+    font-size: 6vw;
+  }
+  .stars--colors{
+    margin-top: 2vw;
+  }
+  .stars{
+    width: 20vw;
+  }
+  .colors{
+    font-size: 3vw;
+  }
+  .product-button{
+    height:11vw;
+    font-size: 3.5vw;
+  }
+}

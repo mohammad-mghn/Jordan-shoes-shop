@@ -1,0 +1,14 @@
+.home-layout-container {
+  position: relative;
+  background-color: var(--backgroundColor);
+}
+.home-layout-products {
+  width: 95%;
+  min-height: 100vh;
+  margin: 2rem 2.5% 0 2.5%;
+}
+.products-page {
+  padding: 7rem 2.5% 0 2.5%;
+  min-height: calc(100vh - 7rem);
+  background-color: var(--backgroundColor);
+}

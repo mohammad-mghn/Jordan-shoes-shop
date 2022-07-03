@@ -12,18 +12,22 @@ import Stars from "../assists/threestars.svg";
 import "../styles/cartItem.css";
 
 const CartItem = (props) => {
-  const { id, name, manifactor, color, stars, quantity, totalPrice } = props;
+  const { id, name, manifactor, color, quantity, totalPrice } = props;
+
   const dispatch = useDispatch();
 
   const increament = () => {
     dispatch(cartActions.addToCart({ id: id }));
   };
+
   const decreament = () => {
     dispatch(cartActions.removeFromCart(id));
   };
+
   const deleteItem = () => {
     dispatch(cartActions.removeItemFromCart(id));
   };
+
   return (
     <div className="cart-item-container">
       <img src={ShoesImage} alt="" className="shoes-preview" />

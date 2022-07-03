@@ -4,9 +4,10 @@
   width: 100%;
   background-image: url("../assists/home-background.png");
   background-size: cover;
-  background-position: center;
   background-position: top;
+  background-position: center;
   background-attachment: fixed;
+  box-shadow: 0 -20px 25px rgba(0, 0, 0, 0.6) inset;
 }
 .landing-shoes-details {
   position: absolute;
@@ -62,4 +63,28 @@
   font-family: Roboto;
   line-height: 1.3rem;
 }
-
+@media screen and (max-width: 900px) {
+  .landing-cost {
+    font-size: 1.5rem;
+  }
+  .landing-shoes-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: -1.5rem;
+    font-size: 0.6rem;
+    width: 45vw;
+    overflow: hidden;
+    background-color: aqua;
+  }
+  .description-container {
+    display: none;
+  }
+  .description--otherColors {
+    bottom: 0;
+    font-size: 0.8rem;
+  }
+  .otherColorImage {
+    width: 16rem;
+  }
+}

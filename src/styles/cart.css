@@ -65,7 +65,9 @@
 }
 .shop-section {
   position: absolute;
-  top: 97.5%;
+  bottom: 2.5%;
+  left: 50%;
+  transform: translate(-50%);
   height: 2rem;
   width: fit-content;
   padding: 0 0.75rem;

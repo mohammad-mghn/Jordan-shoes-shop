@@ -1,80 +1,79 @@
 import { useEffect, useState } from "react";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import { CSSTransition } from "react-transition-group";
-import { cartActions } from "./store/cart-slice";
 import { AnimatePresence } from "framer-motion";
+import { CSSTransition } from "react-transition-group";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+
+import { cartActions } from "./store/cart-slice";
 import { authActions } from "./store/auth-slice";
 
-import HomeLayout from "./components/homeLayout";
-import Navbar from "./components/navbar";
 import Cart from "./components/cart";
 import Auth from "./components/auth";
+import Navbar from "./components/navbar";
+import Error404 from "./components/error404";
+import HomeLayout from "./components/homeLayout";
 import AnimatedPage from "./components/animatedPage";
+import ProductsLayout from "./components/productsLayout";
 
 import "./styles/App.css";
-import ProductsLayout from "./components/productsLayout";
-import Error404 from "./components/error404";
 
 function App() {
-  const user = useSelector((state) => state.auth.user);
-
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-
-  const showCart = useSelector((state) => state.cart.showCart);
-
-  const itemsList = useSelector((state) => state.cart.itemsList);
+  const location = useLocation();
 
   const dispatch = useDispatch();
 
-  const [LoggedInUser, setLoggedInUser] = useState(
-    JSON.parse(localStorage.getItem("jordan-shop-user")) ? true : false
-  );
-
   const showCarthandler = () => dispatch(cartActions.showCart());
 
-  const location = useLocation();
+  const user = useSelector((state) => state.auth.user);
+  const showCart = useSelector((state) => state.cart.showCart);
+  const itemsList = useSelector((state) => state.cart.itemsList);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   useEffect(() => {
+    // this block run at first render to push user data stored into database using
+    // email which stored in localStorge, have to be mentioned that this block run just once
     const fetchData = async () => {
+      const loggedInUserEmail = JSON.parse(
+        localStorage.getItem("jordan-shop-user")
+      ).email;
+
+      // It's Not only unsafe to fetch users data including passwords, but also unprofessional, but It's
+      // completly ok duo to it's not real product.
       const allUsers = await fetch(
         "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json"
       );
+
       var usersList = await allUsers.json();
 
       const localUsersList = usersList ? usersList : [];
 
       const existingUser = localUsersList.find(
-        (item) =>
-          item.email ===
-          JSON.parse(localStorage.getItem("jordan-shop-user")).email
+        (item) => item.email === loggedInUserEmail
       );
 
-      if (existingUser) {
-        dispatch(authActions.Login(existingUser));
-        dispatch(
-          cartActions.setItemsList(
-            existingUser.cartItemsList ? existingUser.cartItemsList : []
-          )
-        );
-      }
+      if (!existingUser) return;
+
+      dispatch(authActions.Login(existingUser));
+
+      dispatch(
+        cartActions.setItemsList(
+          existingUser.cartItemsList ? existingUser.cartItemsList : []
+        )
+      );
     };
     fetchData();
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const updateUserCart = async () => {
       const allUsers = await fetch(
         "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json"
       );
       var usersList = await allUsers.json();
 
+      // next line is because of firebase don't return empty array of users return null
+      // which is useless and cause bug
       const localUsersList = usersList ? usersList : [];
 
       localUsersList.forEach((item) => {
@@ -85,9 +84,8 @@ function App() {
           return item;
         }
       });
-      console.log(localUsersList);
 
-      const fetchUser = await fetch(
+      await fetch(
         "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json",
         {
           method: "PUT",
@@ -95,8 +93,16 @@ function App() {
         }
       );
     };
-    fetchData();
-  }, [itemsList]);
+    updateUserCart();
+  }, [itemsList, user.email]);
+
+  const routes = [
+    { path: "/", component: <HomeLayout /> },
+    { path: "/products", component: <ProductsLayout /> },
+    { path: "/man", component: <ProductsLayout /> },
+    { path: "/woman", component: <ProductsLayout /> },
+    { path: "/kids", component: <ProductsLayout /> },
+  ];
 
   return (
     <>
@@ -118,11 +124,9 @@ function App() {
 
           <AnimatePresence exitBeforeEnter>
             <Routes key={location.pathname} location={location}>
-              <Route exact path="/" element={<HomeLayout />} />
-              <Route exact path="/products" element={<ProductsLayout />} />
-              <Route exact path="/man" element={<ProductsLayout />} />
-              <Route exact path="/woman" element={<ProductsLayout />} />
-              <Route exact path="/kids" element={<ProductsLayout />} />
+              {routes.map((route) => (
+                <Route exact path={route.path} element={route.component} />
+              ))}
               <Route path="*" element={<Error404 />} />
             </Routes>
           </AnimatePresence>
