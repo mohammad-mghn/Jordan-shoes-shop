@@ -10,6 +10,7 @@ const LogoutPopUp = ({ logoutPopUpHandler }) => {
   const logout = () => {
     logoutPopUpHandler();
     dispatch(authActions.Logout());
+    localStorage.removeItem("jordan-shop-user");
   };
   return (
     <>

@@ -83,11 +83,10 @@
     display: none;
   }
   .description--otherColors {
-    bottom: 0;
+    bottom: 1%;
     font-size: 0.8rem;
   }
   .otherColorImage {
     width: 60vw;
-    
   }
 }
