@@ -7,13 +7,13 @@ import { useDispatch } from "react-redux/es/exports";
 import { cartActions } from "../store/cart-slice";
 
 import ShoesImage from "../assists/shoes-preview.png";
-import Stars from "../assists/threestars.svg";
+import Stars from "../assists/stars.png";
+import Star from "../assists/star.png";
 
 import "../styles/cartItem.css";
 
 const CartItem = (props) => {
-  const { id, name, manifactor, color, quantity, totalPrice } = props;
-
+  const { id, name, manifactor, color, stars, quantity, totalPrice } = props;
   const dispatch = useDispatch();
 
   const increament = () => {
@@ -48,7 +48,14 @@ const CartItem = (props) => {
           {name}
         </div>
         <div>
-          <img src={Stars} alt="" />
+          <div className="cart-stars-contianer">
+            <img src={Stars} alt="" className="cart-stars" />
+            <div className="cart-stars-upper">
+              {[...Array(+stars.toFixed(0))].map(() => (
+                <img src={Star} alt="" className="cart-star" />
+              ))}
+            </div>
+          </div>
           <h6>{color.toUpperCase()}</h6>
           <h6>{quantity}x</h6>
         </div>

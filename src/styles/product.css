@@ -64,8 +64,26 @@
   justify-content: space-between;
   color: var(--greyColor);
 }
+.stars-container {
+  position: relative;
+  height: 1.25rem;
+}
 .stars {
+  position: absolute;
   width: 6.5rem;
+  height: 100%;
+}
+.stars-upper {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  column-gap: 0.09rem;
+}
+.star {
+  width: 1.25rem;
 }
 .colors {
   font-size: 0.8rem;
@@ -75,6 +93,10 @@
 }
 .color {
   cursor: pointer;
+  transition: all 500ms;
+}
+.color:hover {
+  color: var(--whiteColor);
 }
 .color-selected {
   color: var(--redColor);
@@ -193,5 +215,16 @@
   }
   .poduct-button-container {
     height: 16vw;
+  }
+  .stars-container {
+    position: relative;
+    height: 4vw;
+  }
+  .stars-upper {
+    top: 0;
+    column-gap: 0.1vw;
+  }
+  .star {
+    width: 4vw;
   }
 }

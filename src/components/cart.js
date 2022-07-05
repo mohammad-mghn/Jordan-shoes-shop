@@ -39,11 +39,12 @@ const Cart = () => {
             <CartItem
               id={item.id}
               key={item.id}
-              name={item.name}
-              color={item.color}
+              stars={item.stars}
               quantity={item.quantity}
-              manifactor={item.manifactor}
               totalPrice={item.totalPrice}
+              name={item.name.toUpperCase()}
+              color={item.color.toUpperCase()}
+              manifactor={item.manifactor.toUpperCase()}
             />
           ))}
         </section>

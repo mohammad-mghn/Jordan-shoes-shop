@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { useDispatch, useSelector } from "react-redux/es/exports";
@@ -10,6 +10,7 @@ import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import LogoutPopUp from "./logoutPopUp";
 import LinkNavbar from "../elements/link";
 import { cartActions } from "../store/cart-slice";
+import { productsAction } from "../store/products-slice";
 
 import Logo from "../assists/logo.png";
 import Avatar from "../assists/avatar.png";
@@ -31,6 +32,7 @@ const Navbar = () => {
 
   const location = useLocation();
 
+  const [searchBar, setSearchBar] = useState(false);
   const [menu, setMenu] = useState(false);
   const [logoutPopUp, setLogoutPopUp] = useState(false);
   const [pathname, setPathname] = useState(window.location.pathname);
@@ -39,22 +41,10 @@ const Navbar = () => {
     setPathname(location.pathname);
   }, [location.pathname]);
 
-  var prevScrollpos = window.pageYOffset;
-
-  const showCarthandler = () => dispatch(cartActions.showCart());
-
-  function onScroll() {
-    window.onscroll = function () {
-      var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos >= currentScrollPos) {
-        document.getElementById("navbar").style.top = "0";
-      } else {
-        document.getElementById("navbar").style.top = "-6rem";
-      }
-      prevScrollpos = currentScrollPos;
-    };
-  }
-  window.addEventListener("scroll", onScroll);
+  const showCarthandler = () => {
+    menuHandler();
+    dispatch(cartActions.showCart());
+  };
 
   const logoutPopUpHandler = () => {
     setLogoutPopUp((prevValue) => !prevValue);
@@ -64,10 +54,19 @@ const Navbar = () => {
     setMenu((prevValue) => !prevValue);
   };
 
+  const searchBarhandler = () => {
+    setSearchBar((prevValue) => !prevValue);
+  };
+  const searchHandler = (e) => {
+    console.log(e.target.value);
+    dispatch(productsAction.search(e.target.value));
+  };
   return (
     <>
-      <div className="navbar-contianer" id="navbar">
-        <img src={Logo} alt="" className="navbar-logo" />
+      <div className="navbar-contianer">
+        <Link to="/" title="home-page">
+          <img src={Logo} alt="" className="navbar-logo" />
+        </Link>
         <div className="menu-icon" onClick={menuHandler}>
           <MenuRoundedIcon sx={{ fontSize: "2.75rem" }} />
         </div>
@@ -76,13 +75,34 @@ const Navbar = () => {
             <LinkNavbar item={item} pathname={pathname} key={item.text} />
           ))}
         </div>
+        <CSSTransition
+          in={searchBar}
+          timeout={300}
+          classNames="loginAndSignup-button"
+          unmountOnExit
+        >
+          <div className="search-bar">
+            <input
+              type="text"
+              className="search-bar-input"
+              placeholder="Search a key word"
+              required
+              onChange={searchHandler}
+            />
+            <SearchRoundedIcon
+              className="search-bar-icon"
+              onClick={searchHandler}
+            />
+          </div>
+        </CSSTransition>
         <div className="cart--avatar">
-          <SearchRoundedIcon />
-          <ShoppingCartRoundedIcon
-            onClick={showCarthandler}
+          <SearchRoundedIcon onClick={searchBarhandler} />
+          <span
+            className={itemsListLength > 0 && "cart-icon"}
             data-number={itemsListLength}
-            className="cart-icon"
-          />
+          >
+            <ShoppingCartRoundedIcon onClick={showCarthandler} />
+          </span>
           <img
             src={Avatar}
             alt=""
@@ -91,27 +111,50 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <CSSTransition
-        in={menu}
-        timeout={300}
-        classNames="cart"
-        unmountOnExit
-      >
+      <CSSTransition in={menu} timeout={300} classNames="cart" unmountOnExit>
         <>
           <div className="navbar-contianer-mobile" id="navbar">
-            <img src={Logo} alt="" className="navbar-logo-mobile" />
+            <Link to="/" title="home-page">
+              <img src={Logo} alt="" className="navbar-logo-mobile" />
+            </Link>
+            <CSSTransition
+              in={searchBar}
+              timeout={300}
+              classNames="loginAndSignup-button"
+              unmountOnExit
+            >
+              <div className="search-bar-mobile">
+                <input
+                  type="text"
+                  className="search-bar-input"
+                  placeholder="Search a key word"
+                  required
+                  onChange={searchHandler}
+                />
+                <SearchRoundedIcon
+                  className="search-bar-icon"
+                  onClick={searchHandler}
+                />
+              </div>
+            </CSSTransition>
             <div className="links-mobile">
               {links.map((item) => (
                 <LinkNavbar item={item} pathname={pathname} key={item.text} />
               ))}
             </div>
+
             <div className="cart--avatar-mobile">
-              <SearchRoundedIcon />
-              <ShoppingCartRoundedIcon
-                onClick={showCarthandler}
+              <SearchRoundedIcon onClick={searchBarhandler} />
+              <span
+                className={itemsListLength > 0 && "cart-icon"}
                 data-number={itemsListLength}
-                className="cart-icon-mobile"
-              />
+              >
+                <ShoppingCartRoundedIcon
+                  onClick={showCarthandler}
+                  data-number={itemsListLength}
+                  className="cart-icon-mobile"
+                />
+              </span>
               <img
                 src={Avatar}
                 alt=""

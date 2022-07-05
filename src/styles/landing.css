@@ -5,7 +5,7 @@
   background-image: url("../assists/home-background.png");
   background-size: cover;
   background-position: top;
-  background-position: center;
+  background-position: top;
   background-attachment: fixed;
   box-shadow: 0 -20px 25px rgba(0, 0, 0, 0.6) inset;
 }
@@ -63,7 +63,8 @@
   font-family: Roboto;
   line-height: 1.3rem;
 }
-@media screen and (max-width: 900px) {
+
+@media screen and (max-width: 1100px) {
   .landing-container {
     background-image: url("../assists/home-background-mobile.png");
   }

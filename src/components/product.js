@@ -8,6 +8,8 @@ import styled from "styled-components";
 import { useSpring, animated, config } from "react-spring";
 
 import ThreeStars from "../assists/threestars.svg";
+import Star from "../assists/star.png";
+import Stars from "../assists/stars.png";
 
 import "../styles/product.css";
 
@@ -89,14 +91,22 @@ const Product = (props) => {
       </div>
       <div className="name--model--cost">
         <div className="name--model">
-          {manifactor}
+          {manifactor.toUpperCase()}
           <br />
-          {name}
+          {name.toUpperCase()}
         </div>
         <div className="cost">{shortenPrice(price)}$</div>
       </div>
       <div className="stars--colors">
-        <img src={ThreeStars} alt="" className="stars" />
+        <div className="stars-container">
+          <img src={Stars} alt="" className="stars" />
+          <div className="stars-upper">
+            {[...Array(+stars.toFixed(0))].map(() => (
+              <img src={Star} alt="" className="star" />
+            ))}
+          </div>
+        </div>
+
         <div className="colors">
           {colors.map((colorItem) => (
             <span

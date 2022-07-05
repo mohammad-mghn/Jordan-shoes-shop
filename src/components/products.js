@@ -8,7 +8,8 @@ import "../styles/products.css";
 import Product from "./product";
 
 const Products = () => {
-  const products = useSelector((state) => state.products.products);
+  const products = useSelector((state) => state.products.filtered);
+  console.log(products);
   return (
     <div className="products-container">
       {products.map((product) => (

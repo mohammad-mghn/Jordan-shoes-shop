@@ -29,6 +29,32 @@
   align-items: center;
   justify-content: space-between;
 }
+.cart-item-container .cart-stars-contianer {
+  position: relative;
+  width: 45%;
+  height: 0.9rem;
+}
+.cart-item-container .cart-stars-contianer img.cart-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.cart-item-container .cart-stars-contianer .cart-stars-upper {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  -moz-column-gap: 0.09rem;
+       column-gap: 0.09rem;
+}
+.cart-item-container .cart-stars-contianer .cart-stars-upper img.cart-star {
+  height: 0.9rem;
+  height: 0.9rem;
+}
 .cart-item-container div div h6 {
   max-width: 40%;
   font-size: 0.7rem;
@@ -36,13 +62,10 @@
   color: #494949;
   overflow: hidden;
 }
-.cart-item-container div div img {
-  width: 50%;
-}
 .cart-item-container div h5 {
   all: unset;
   font-size: 1.7rem;
-  max-width: 6rem;
+  max-width: 5.5rem;
   overflow: hidden;
 }
 .cart-item-container div.remove--add {
@@ -96,12 +119,26 @@
     height: 4vw;
     width: 45.5vw;
   }
+  .cart-item-container div div:nth-child(2) .cart-stars-contianer {
+    height: 4vw;
+  }
+  .cart-item-container div div:nth-child(2) .cart-stars-contianer .cart-stars-upper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    -moz-column-gap: 0vw;
+         column-gap: 0vw;
+  }
+  .cart-item-container div div:nth-child(2) .cart-stars-contianer .cart-stars-upper img.cart-star {
+    height: 4vw;
+    height: 4vw;
+  }
   .cart-item-container div div h6 {
     font-size: 3vw;
     max-width: 14vw;
-  }
-  .cart-item-container div div img {
-    width: 20vw;
   }
   .cart-item-container div h5 {
     font-size: 6vw;
