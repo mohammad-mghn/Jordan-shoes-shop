@@ -67,6 +67,7 @@
 @media screen and (max-width: 1100px) {
   .landing-container {
     background-image: url("../assists/home-background-mobile.png");
+    background-position: center;
   }
   .landing-cost {
     font-size: 1.5rem;
