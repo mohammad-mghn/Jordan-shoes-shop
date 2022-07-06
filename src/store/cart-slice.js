@@ -31,7 +31,7 @@ const cartSlice = createSlice({
           price: newItem.price,
           stars: newItem.stars,
           color: newItem.color,
-          totalPrice: newItem.totalPrice,
+          totalPrice: newItem.price,
           manifactor: newItem.manifactor,
         });
 

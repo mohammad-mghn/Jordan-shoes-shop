@@ -10,7 +10,6 @@ const productsCart = createSlice({
   },
   reducers: {
     search: (state, action) => {
-      console.log("asdfasdf");
       state.filtered = state.products.filter((product) =>
         product.name
           .toLocaleLowerCase()
@@ -19,6 +18,14 @@ const productsCart = createSlice({
       if (action.payload.trim() === "") {
         state.filtered = state.products;
       }
+    },
+    addComment: (state, action) => {
+      const ID = action.payload.id;
+      const newComment = action.payload.comment;
+      
+      const existingItem = state.products.find((item) => item.id === ID);
+
+      existingItem.comments.push(newComment);
     },
   },
 });

@@ -1,0 +1,594 @@
+@import "./variables/variables.scss";
+
+.product-page-main-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("../assists/product-background.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: $greyColor;
+  display: grid;
+  place-items: center;
+}
+.product-page-container {
+  width: 75%;
+  height: 37rem;
+  margin-top: 4rem;
+  border: 2px solid $darkGreyColor;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(5px);
+}
+.shoes-pictures-container {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  row-gap: 2rem;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  .main-picture {
+    width: 23rem;
+    height: 21rem;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    img {
+      width: 6rem;
+      height: 6rem;
+      cursor: pointer;
+    }
+  }
+}
+.shoes-information {
+  all: unset;
+  width: 35%;
+  height: 90%;
+  padding-right: 0.5rem;
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: $whiteColor;
+  }
+  h1:first-child {
+    margin-top: 1rem;
+  }
+}
+.select-colors,
+.select-size {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: $greyColor;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: space-between;
+  span {
+    margin-left: 0.25rem;
+    font-weight: lighter;
+    font-size: 0.85rem;
+    user-select: none;
+    cursor: pointer;
+    :hover {
+      color: $whiteColor;
+    }
+  }
+  .selected {
+    color: $redColor;
+  }
+  .selected:hover {
+    color: $lightGreyColor;
+  }
+}
+.select-size {
+  margin-top: 0.75rem;
+  font-weight: none;
+  font-size: 1.25rem;
+  height: 2rem;
+  select {
+    padding: 0.125rem 0;
+    transform: translateY(-10%);
+    font-size: 1rem;
+    font-family: "Goldman";
+    color: $greyColor;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.2rem solid $redColor;
+    outline: none;
+    cursor: pointer;
+    option {
+      background-color: $greyColor;
+      color: $lightGreyColor;
+    }
+  }
+}
+.details {
+  h2 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  div {
+    margin-left: 1rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h4,
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+.product-stars--price {
+  margin-top: 1rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  div:first-child {
+    position: relative;
+    height: 1.25rem;
+    img:first-child {
+      height: 100%;
+    }
+    div {
+      position: absolute;
+      top: 0;
+      display: flex;
+      align-items: center;
+      column-gap: 0.22rem;
+      img {
+        height: 1.25rem;
+        width: 1.25rem;
+      }
+    }
+  }
+  h5 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: $redColor;
+  }
+}
+.free-delivery {
+  margin-top: 1rem;
+  h5 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  h5:last-child {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+}
+.poduct-page-button-container {
+  margin-top: 1rem;
+  height: 3.5rem;
+  width: 100%;
+  overflow: hidden;
+}
+.product-page-button {
+  margin-top: 0rem;
+  height: 100%;
+}
+.comments {
+  width: 28%;
+  height: 85%;
+  margin: 0 2% 0 2%;
+  padding-left: 2%;
+  position: relative;
+  div.comments-container {
+    box-sizing: border-box;
+    height: calc(100% - 8rem);
+    width: 100%;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    scroll-behavior: smooth;
+  }
+  div.comments-container::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+  div.comments-container::-webkit-scrollbar-thumb {
+    background-color: $darkGreyColor;
+  }
+}
+.comments::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 0.2rem;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: var(--darkGreyColor);
+}
+.comment {
+  position: relative;
+  overflow: hidden;
+  height: fit-content;
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  img {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  div.comment-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin-left: 0.5rem;
+    h3 {
+      margin: 0;
+      color: $whiteColor;
+      font-size: 1rem;
+    }
+    h4 {
+      margin: 0.25rem 0 0 0.5rem;
+      padding-right: 0.5rem;
+      color: $greyColor;
+      font-size: 0.55rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    P {
+      margin: 0.25rem 0 0 0.75rem;
+      color: $lightGreyColor;
+      font-size: 0.75rem;
+      width: 92%;
+      text-align: justify;
+    }
+  }
+  .product-star-rate {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+    height: 0.75rem;
+    display: flex;
+    img.product-star-rate-img {
+      height: 100%;
+      width: 100%;
+    }
+    div {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      column-gap: 0.13rem;
+      img {
+        width: 0.75rem;
+        height: 0.75rem;
+      }
+    }
+  }
+}
+.comments-form {
+  position: absolute;
+  top: calc(100% - 7.5rem);
+  box-sizing: border-box;
+  height: 7.5rem;
+  border-radius: 0.5rem;
+  width: 90%;
+  backdrop-filter: blur(100px);
+  padding-top: 0.5rem;
+}
+.comments-form::after {
+  content: "";
+  position: absolute;
+  left: -2.5%;
+  top: 0;
+  width: 105%;
+  height: 0.2rem;
+  border-radius: 1rem;
+  background-color: $darkGreyColor;
+}
+.comment-form-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 1.5rem;
+  width: 100%;
+  margin-top: 0.25rem;
+  h6 {
+    font-size: 1rem;
+  }
+  .comment-stars-container {
+    position: relative;
+    width: 5.5rem;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    img:first-child {
+      position: absolute;
+      height: 100%;
+    }
+    .comment-stars-star {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      column-gap: 0.19rem;
+      img {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+    .comment-stars-star-button {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      column-gap: 0.19rem;
+      opacity: 0;
+      img {
+        width: 1rem;
+        height: 1rem;
+        opacity: 0;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.comment-form-section {
+  .yes-no {
+    height: 100%;
+    width: 4rem;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h6 {
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    h6.suggested {
+      color: $redColor;
+    }
+  }
+}
+.comment-input {
+  position: relative;
+  // background-color: aqua;
+  height: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  input,
+  button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+  input {
+    font-size: 0.9rem;
+    font-family: "goldman";
+    height: 100%;
+    color: $lightGreyColor;
+    width: calc(100% - 2rem);
+  }
+  button {
+    background-color: transparent;
+    height: 3rem;
+    width: 2rem;
+    color: $redColor;
+    cursor: pointer;
+  }
+}
+.comment-input::after {
+  content: "";
+  position: absolute;
+  left: -2.5%;
+  top: 110%;
+  width: 105%;
+  height: 0.2rem;
+  border-radius: 1rem;
+  background-color: $darkGreyColor;
+}
+@media screen and (max-width: 1250px) {
+  .product-page-main-container {
+    background-repeat: repeat-y;
+    height: fit-content;
+    padding: 5rem 0;
+  }
+  .product-page-container {
+    flex-direction: column;
+    width: 90%;
+    height: fit-content;
+  }
+  .shoes-pictures-container {
+    width: 90%;
+    .main-picture {
+      height: 50vw;
+      width: 58vw;
+    }
+    div {
+      img {
+        height: 20vw;
+        width: 22vw;
+      }
+    }
+  }
+  .shoes-information {
+    width: 90%;
+    h1 {
+      font-size: 5vw;
+    }
+    h1:first-child {
+      margin-top: 2.5rem;
+    }
+  }
+  .select-colors,
+  .select-size {
+    font-size: 3.5vw;
+  }
+  .details {
+    h2 {
+      font-size: 5vw;
+    }
+    div {
+      margin-left: 4vw;
+      height: 7vw;
+      h4,
+      p {
+        font-size: 3vw;
+      }
+    }
+  }
+  .product-stars--price {
+    height: 6vw;
+    div:first-child {
+      height: 5vw;
+      div {
+        column-gap: 0.9vw;
+        img {
+          height: 5vw;
+          width: 5vw;
+        }
+      }
+    }
+    h5 {
+      font-size: 6vw;
+    }
+  }
+  .free-delivery {
+    h5 {
+      font-size: 4vw;
+    }
+    h5:last-child {
+      font-size: 3.5vw;
+    }
+  }
+  .poduct-page-button-container {
+    margin-top: 1rem;
+    height: 11vw;
+  }
+  .comments {
+    width: 90%;
+    height: 100%;
+    margin-top: 2rem;
+    padding: 0;
+    .comments-container {
+      height: calc(50%);
+      overflow: hidden;
+    }
+  }
+  .comments::after {
+    display: none;
+  }
+  .comment {
+    img {
+      height: 9vw;
+      width: 9vw;
+    }
+    div.comment-data {
+      margin-left: 2vw;
+      h3 {
+        font-size: 4vw;
+      }
+      h4 {
+        margin: 1vw 0 0 2vw;
+        font-size: 2.25vw;
+      }
+      P {
+        margin: 0.25rem 0 0 0.75rem;
+        font-size: 2.5vw;
+      }
+    }
+    .product-star-rate {
+      position: absolute;
+      top: 1vw;
+      right: 2vw;
+      height: 3vw;
+      div {
+        column-gap: 0.55vw;
+        img {
+          width: 3vw;
+          height: 3vw;
+        }
+      }
+    }
+  }
+  .comments-form {
+    position: static;
+    margin-top: 1rem;
+    height: 35vw;
+    width: 100%;
+    padding-top: 2vw;
+  }
+  .comment-form-section {
+    height: 7vw;
+    margin-top: 1vw;
+    h6 {
+      font-size: 4vw;
+    }
+    .comment-stars-container {
+      width: 28vw;
+      height: 5vw;
+      .comment-stars-star {
+        column-gap: 0.9vw;
+        img {
+          width: 5vw;
+          height: 5vw;
+        }
+      }
+      .comment-stars-star-button {
+        column-gap: 0.9vw;
+        opacity: 0;
+        img {
+          width: 5vw;
+          height: 5vw;
+          opacity: 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .comment-form-section {
+    .yes-no {
+      width: 18vw;
+      h6 {
+        font-size: 3.5vw;
+      }
+    }
+  }
+
+  .comment-input {
+    position: relative;
+    height: 8vw;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input,
+    button {
+      border: none;
+      outline: none;
+      background-color: transparent;
+    }
+    input {
+      font-size: 4vw;
+      font-family: "goldman";
+      height: 100%;
+      color: $lightGreyColor;
+      width: calc(100% - 2rem);
+    }
+    button {
+      height: 100%;
+      width: 5vw;
+    }
+  }
+  .comment-input::after {
+    background-color: $redColor;
+  }
+}

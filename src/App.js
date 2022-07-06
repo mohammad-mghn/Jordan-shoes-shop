@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { AnimatePresence } from "framer-motion";
 import { CSSTransition } from "react-transition-group";
@@ -17,6 +17,7 @@ import AnimatedPage from "./components/animatedPage";
 import ProductsLayout from "./components/productsLayout";
 
 import "./styles/App.css";
+import ProductPage from "./components/productPage";
 
 function App() {
   const location = useLocation();
@@ -29,6 +30,7 @@ function App() {
   const showCart = useSelector((state) => state.cart.showCart);
   const itemsList = useSelector((state) => state.cart.itemsList);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
     // this block run at first render to push user data stored into database using
@@ -126,6 +128,26 @@ function App() {
             <Routes key={location.pathname} location={location}>
               {routes.map((route) => (
                 <Route exact path={route.path} element={route.component} />
+              ))}
+              {products.map((product) => (
+                <Route
+                  exact
+                  path={product.name.replaceAll(" ", "-")}
+                  element={
+                    <ProductPage
+                      product={product}
+                      name={product.name}
+                      manifactor={product.manifactor}
+                      stars={product.stars}
+                      price={product.price}
+                      colors={product.colors}
+                      sizes={product.sizes}
+                      details={product.details}
+                      comments={product.comments}
+                    />
+                  }
+                  key={product.id}
+                />
               ))}
               <Route path="*" element={<Error404 />} />
             </Routes>
