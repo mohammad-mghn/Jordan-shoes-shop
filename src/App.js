@@ -7,6 +7,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import { cartActions } from "./store/cart-slice";
 import { authActions } from "./store/auth-slice";
+import { productsActions } from "./store/products-slice";
 
 import Cart from "./components/cart";
 import Auth from "./components/auth";
@@ -19,6 +20,8 @@ import ProductsLayout from "./components/productsLayout";
 import "./styles/App.css";
 import ProductPage from "./components/productPage";
 
+import { PRODUCTS } from "./store/products";
+
 function App() {
   const location = useLocation();
 
@@ -30,7 +33,7 @@ function App() {
   const showCart = useSelector((state) => state.cart.showCart);
   const itemsList = useSelector((state) => state.cart.itemsList);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const products = useSelector((state) => state.products.products);
+  const productss = useSelector((state) => state.products.products);
 
   useEffect(() => {
     // this block run at first render to push user data stored into database using
@@ -65,6 +68,18 @@ function App() {
       );
     };
     fetchData();
+    const fetchProductsData = async () => {
+      // It's Not only unsafe to fetch users data including passwords, but also unprofessional, but It's
+      // completly ok duo to it's not real product.
+      const allProducts = await fetch(
+        "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/products.json"
+      );
+
+      var usersList = await allProducts.json();
+
+      dispatch(productsActions.setProductsList(usersList));
+    };
+    fetchProductsData();
   }, []);
 
   useEffect(() => {
@@ -72,6 +87,7 @@ function App() {
       const allUsers = await fetch(
         "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json"
       );
+
       var usersList = await allUsers.json();
 
       // next line is because of firebase don't return empty array of users return null
@@ -97,6 +113,19 @@ function App() {
     };
     updateUserCart();
   }, [itemsList, user.email]);
+
+  useEffect(() => {
+    const updateUserCart = async () => {
+      await fetch(
+        "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/products.json",
+        {
+          method: "PUT",
+          body: JSON.stringify(productss),
+        }
+      );
+    };
+    updateUserCart();
+  }, [productss]);
 
   const routes = [
     { path: "/", component: <HomeLayout /> },
@@ -129,7 +158,7 @@ function App() {
               {routes.map((route) => (
                 <Route exact path={route.path} element={route.component} />
               ))}
-              {products.map((product) => (
+              {productss.map((product) => (
                 <Route
                   exact
                   path={product.name.replaceAll(" ", "-")}

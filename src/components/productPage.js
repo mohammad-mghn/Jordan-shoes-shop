@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { CSSTransition } from "react-transition-group";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../store/cart-slice";
-import { productsAction } from "../store/products-slice";
+import { productsActions } from "../store/products-slice";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 
 import Star from "../assists/star.png";
@@ -36,13 +36,15 @@ const ProductPage = ({ product }) => {
 
   const userName = useSelector((state) => state.auth.user.name);
 
+  const products = useSelector((state) => state.products.products);
+
   const showCarthandler = () => {
     dispatch(cartActions.showCart());
   };
 
   const [color, setColor] = useState(colors[0]);
 
-  const [star, setStar] = useState(5);
+  const [star, setStar] = useState(1);
 
   const [suggested, setSuggested] = useState(true);
 
@@ -84,7 +86,8 @@ const ProductPage = ({ product }) => {
       time: date.getTime(),
       suggested: suggested,
     };
-    dispatch(productsAction.addComment({ id, comment }));
+    dispatch(productsActions.addComment({ id, comment }));
+    dispatch(productsActions.starHandler({ id, star }));
   };
 
   const shortenPrice = (price) => {
@@ -100,6 +103,23 @@ const ProductPage = ({ product }) => {
     { text: "YES", value: true },
     { text: "NO", value: false },
   ];
+
+  // useEffect(() => {
+  //   const pushProducts = async () => {
+  //     await fetch(
+  //       "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/products.json",
+  //       {
+  //         method: "PUT",
+  //         body: JSON.stringify(products),
+  //       }
+  //     );
+  //   };
+
+  //   console.log("asdf");
+
+  //   pushProducts();
+  // }, [products]);
+
   return (
     <div className="product-page-main-container">
       <section className="product-page-container">
@@ -196,36 +216,36 @@ const ProductPage = ({ product }) => {
         </div>
         <div className="comments">
           <div className="comments-container">
-            {comments.map((comment, index) => (
-              <div className="comment" key={index}>
-                <img src={Avatar} alt="" />
-                <div className="comment-data">
-                  <h3>{comment.name}</h3>
-                  {/* <h4>{comment.time}</h4> */}
-                  <h4>
-                    <span>A WEEK AGO</span>
-                    <span>
-                      {comment.suggested ? "SUGGESTED" : "NOT SUGGESTED"}
-                    </span>
-                  </h4>
-                  <p>{comment.text}</p>
-                </div>
-                <div className="product-star-rate">
-                  <img src={Stars} alt="" className="product-star-rate-img" />
-                  <div>
-                    {[...Array(+comment.stars.toFixed(0))].map(
-                      (item, index) => (
-                        <img src={Star} alt="" key={index} />
-                      )
-                    )}
+            {comments &&
+              comments.map((comment, index) => (
+                <div className="comment" key={index}>
+                  <img src={Avatar} alt="" />
+                  <div className="comment-data">
+                    <h3>{comment.name}</h3>
+                    <h4>
+                      <span>A WEEK AGO</span>
+                      <span>
+                        {comment.suggested ? "SUGGESTED" : "NOT SUGGESTED"}
+                      </span>
+                    </h4>
+                    <p>{comment.text}</p>
+                  </div>
+                  <div className="product-star-rate">
+                    <img src={Stars} alt="" className="product-star-rate-img" />
+                    <div>
+                      {[...Array(+comment.stars.toFixed(0))].map(
+                        (item, index) => (
+                          <img src={Star} alt="" key={index} />
+                        )
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
           <div className="comments-form">
             <div className="comment-form-section">
-              <h6>Your star:</h6>
+              <h6>YOUR STAR:</h6>
               <div className="comment-stars-container">
                 <img src={Stars} alt="" />
                 <div className="comment-stars-star">
@@ -248,7 +268,7 @@ const ProductPage = ({ product }) => {
               </div>
             </div>
             <div className="comment-form-section">
-              <h6>Your star:</h6>
+              <h6>WILL SUGGEST:</h6>
               <div className="yes-no">
                 {suggestedList.map((item, index) => (
                   <h6
@@ -261,11 +281,18 @@ const ProductPage = ({ product }) => {
                 ))}
               </div>
             </div>
-            <div className="comment-input">
+            <form
+              className="comment-input"
+              onSubmit={(e) => {
+                commentHandler();
+                e.preventDefault();
+              }}
+            >
               <input
                 type="text"
                 onChange={commentIsValidHandler}
                 ref={commentForm}
+                placeholder="YOUR COMMENT"
               />
 
               <CSSTransition
@@ -274,11 +301,11 @@ const ProductPage = ({ product }) => {
                 classNames="product-button"
                 unmountOnExit
               >
-                <button>
-                  <SendRoundedIcon onClick={commentHandler} />
+                <button type="submit">
+                  <SendRoundedIcon />
                 </button>
               </CSSTransition>
-            </div>
+            </form>
           </div>
         </div>
       </section>

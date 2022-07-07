@@ -14,7 +14,7 @@
   place-items: center;
 }
 .product-page-container {
-  width: 75%;
+  width: 75rem;
   height: 37rem;
   margin-top: 4rem;
   border: 2px solid $darkGreyColor;
@@ -76,7 +76,7 @@
     user-select: none;
     cursor: pointer;
     :hover {
-      color: $whiteColor;
+      color: $lightGreyColor;
     }
   }
   .selected {
@@ -243,7 +243,8 @@
       margin: 0.25rem 0 0 0.75rem;
       color: $lightGreyColor;
       font-size: 0.75rem;
-      width: 92%;
+      width: 15rem;
+      overflow: hidden;
       text-align: justify;
     }
   }
@@ -298,7 +299,7 @@
   width: 100%;
   margin-top: 0.25rem;
   h6 {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .comment-stars-container {
     position: relative;
@@ -376,6 +377,9 @@
     height: 100%;
     color: $lightGreyColor;
     width: calc(100% - 2rem);
+  }
+  input::placeholder {
+    color: $greyColor;
   }
   button {
     background-color: transparent;
@@ -502,7 +506,7 @@
       }
       P {
         margin: 0.25rem 0 0 0.75rem;
-        font-size: 2.5vw;
+        font-size: 3vw;
       }
     }
     .product-star-rate {
@@ -530,7 +534,7 @@
     height: 7vw;
     margin-top: 1vw;
     h6 {
-      font-size: 4vw;
+      font-size: 3vw;
     }
     .comment-stars-container {
       width: 28vw;
@@ -577,7 +581,7 @@
       background-color: transparent;
     }
     input {
-      font-size: 4vw;
+      font-size: 3.25vw;
       font-family: "goldman";
       height: 100%;
       color: $lightGreyColor;

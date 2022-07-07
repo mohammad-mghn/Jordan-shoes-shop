@@ -10,7 +10,7 @@ import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import LogoutPopUp from "./logoutPopUp";
 import LinkNavbar from "../elements/link";
 import { cartActions } from "../store/cart-slice";
-import { productsAction } from "../store/products-slice";
+import { productsActions } from "../store/products-slice";
 
 import Logo from "../assists/logo.png";
 import Avatar from "../assists/avatar.png";
@@ -59,7 +59,7 @@ const Navbar = () => {
   };
   const searchHandler = (e) => {
     console.log(e.target.value);
-    dispatch(productsAction.search(e.target.value));
+    dispatch(productsActions.search(e.target.value));
   };
   return (
     <>

@@ -13,7 +13,7 @@
 }
 
 .product-page-container {
-  width: 75%;
+  width: 75rem;
   height: 37rem;
   margin-top: 4rem;
   border: 2px solid #202020;
@@ -86,7 +86,7 @@
 }
 .select-colors span :hover,
 .select-size span :hover {
-  color: #ffffff;
+  color: #999999;
 }
 .select-colors .selected,
 .select-size .selected {
@@ -267,7 +267,8 @@
   margin: 0.25rem 0 0 0.75rem;
   color: #999999;
   font-size: 0.75rem;
-  width: 92%;
+  width: 15rem;
+  overflow: hidden;
   text-align: justify;
 }
 .comment .product-star-rate {
@@ -326,7 +327,7 @@
   margin-top: 0.25rem;
 }
 .comment-form-section h6 {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 .comment-form-section .comment-stars-container {
   position: relative;
@@ -405,6 +406,15 @@
   height: 100%;
   color: #999999;
   width: calc(100% - 2rem);
+}
+.comment-input input::-moz-placeholder {
+  color: #494949;
+}
+.comment-input input:-ms-input-placeholder {
+  color: #494949;
+}
+.comment-input input::placeholder {
+  color: #494949;
 }
 .comment-input button {
   background-color: transparent;
@@ -542,7 +552,7 @@
   }
   .comment div.comment-data P {
     margin: 0.25rem 0 0 0.75rem;
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
   .comment .product-star-rate {
     position: absolute;
@@ -572,7 +582,7 @@
     margin-top: 1vw;
   }
   .comment-form-section h6 {
-    font-size: 4vw;
+    font-size: 3vw;
   }
   .comment-form-section .comment-stars-container {
     width: 28vw;
@@ -620,7 +630,7 @@
     background-color: transparent;
   }
   .comment-input input {
-    font-size: 4vw;
+    font-size: 3.25vw;
     font-family: "goldman";
     height: 100%;
     color: #999999;
