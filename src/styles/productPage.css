@@ -92,10 +92,6 @@
 .select-size .selected {
   color: #e70000;
 }
-.select-colors .selected:hover,
-.select-size .selected:hover {
-  color: #999999;
-}
 
 .select-size {
   margin-top: 0.75rem;

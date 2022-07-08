@@ -74,6 +74,10 @@ const cartSlice = createSlice({
 
       state.totalPrice = totalPrice;
     },
+    logout: (state) => {
+      state.totalPrice = 0;
+      state.totalQuantity = 0;
+    },
   },
 });
 

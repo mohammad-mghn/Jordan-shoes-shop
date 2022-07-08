@@ -87,7 +87,15 @@ const ProductPage = ({ product }) => {
       suggested: suggested,
     };
     dispatch(productsActions.addComment({ id, comment }));
-    dispatch(productsActions.starHandler({ id, star }));
+    dispatch(productsActions.starHandler(id));
+  };
+  const commentSubmitHandler = (e) => {
+    if (iscommentVaild) {
+      e.preventDefault();
+      commentHandler();
+      commentForm.current.value = "";
+      setIscommentVaild(false);
+    }
   };
 
   const shortenPrice = (price) => {
@@ -281,13 +289,7 @@ const ProductPage = ({ product }) => {
                 ))}
               </div>
             </div>
-            <form
-              className="comment-input"
-              onSubmit={(e) => {
-                commentHandler();
-                e.preventDefault();
-              }}
-            >
+            <form className="comment-input" onSubmit={commentSubmitHandler}>
               <input
                 type="text"
                 onChange={commentIsValidHandler}

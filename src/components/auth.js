@@ -80,6 +80,9 @@ const Auth = () => {
         const userEmail = logInRef.current[0].value;
         const userPassword = logInRef.current[1].value;
 
+        if (!userEmail.includes("@")) {
+          throw new Error("EMAIL IS NOT VALID.");
+        }
         const existingUser = localUsersList.find(
           (user) => user.email === userEmail
         );
@@ -105,31 +108,41 @@ const Auth = () => {
           throw new Error("THERE IS NO ACCOUNT SIGNED UP WITH THIS EMAIL.");
         }
       } else {
-        const user = {
-          name: signUpRef.current[0].value,
-          email: signUpRef.current[1].value,
-          password: signUpRef.current[2].value,
-        };
-
-        localStorage.setItem("jordan-shop-user", JSON.stringify(user));
-
-        localUsersList.push(user);
-
-        await fetch(
-          "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json",
-          {
-            method: "PUT",
-            body: JSON.stringify(localUsersList),
-          }
+        const didSignedUser = localUsersList.find(
+          (user) => user.email === signUpRef.current[1].value
         );
+        if (!didSignedUser) {
+          const user = {
+            name: signUpRef.current[0].value,
+            email: signUpRef.current[1].value,
+            password: signUpRef.current[2].value,
+          };
+          if (!user.email.includes("@")) {
+            throw new Error("EMAIL IS NOT VALID.");
+          }
 
-        setError(null);
+          localStorage.setItem("jordan-shop-user", JSON.stringify(user));
 
-        signUpRef.current[0].value = "";
-        signUpRef.current[1].value = "";
-        signUpRef.current[2].value = "";
+          localUsersList.push(user);
 
-        dispatch(authActions.Login(user));
+          await fetch(
+            "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/users.json",
+            {
+              method: "PUT",
+              body: JSON.stringify(localUsersList),
+            }
+          );
+
+          setError(null);
+
+          signUpRef.current[0].value = "";
+          signUpRef.current[1].value = "";
+          signUpRef.current[2].value = "";
+
+          dispatch(authActions.Login(user));
+        } else {
+          throw new Error("ACCOUNT HAD ALREADY EXISTED.");
+        }
       }
     } catch (err) {
       setError(

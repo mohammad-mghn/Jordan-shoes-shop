@@ -20,7 +20,7 @@ import ProductsLayout from "./components/productsLayout";
 import "./styles/App.css";
 import ProductPage from "./components/productPage";
 
-import { PRODUCTS } from "./store/products";
+import { PRODUCTS } from "./components/productsStore";
 
 function App() {
   const location = useLocation();
@@ -69,8 +69,6 @@ function App() {
     };
     fetchData();
     const fetchProductsData = async () => {
-      // It's Not only unsafe to fetch users data including passwords, but also unprofessional, but It's
-      // completly ok duo to it's not real product.
       const allProducts = await fetch(
         "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/products.json"
       );
@@ -78,6 +76,15 @@ function App() {
       var usersList = await allProducts.json();
 
       dispatch(productsActions.setProductsList(usersList));
+
+      // await fetch(
+      //   "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/products.json",
+      //   {
+      //     method: "PUT",
+      //     body: JSON.stringify(PRODUCTS),
+      //   }
+      // );
+      // dispatch(productsActions.setProductsList(PRODUCTS));
     };
     fetchProductsData();
   }, []);
@@ -164,6 +171,7 @@ function App() {
                   path={product.name.replaceAll(" ", "-")}
                   element={
                     <ProductPage
+                      key={product.id}
                       product={product}
                       name={product.name}
                       manifactor={product.manifactor}
@@ -175,7 +183,6 @@ function App() {
                       comments={product.comments}
                     />
                   }
-                  key={product.id}
                 />
               ))}
               <Route path="*" element={<Error404 />} />

@@ -106,7 +106,7 @@
   left: 40%;
   width: 1.25rem;
   height: 1.25rem;
-  font-size: .95rem;
+  font-size: 0.95rem;
   display: grid;
   place-items: center;
   box-sizing: border-box;
@@ -181,8 +181,8 @@
     position: absolute;
     top: -25%;
     left: 50%;
-    width: 4vw;
-    height: 4vw;
-    font-size: 3vw;
+    width: 80%;
+    height: 65%;
+    font-size:100%;
   }
 }

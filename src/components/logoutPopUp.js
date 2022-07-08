@@ -2,6 +2,7 @@ import React from "react";
 
 import { useDispatch } from "react-redux/es/exports";
 import { authActions } from "../store/auth-slice";
+import { cartActions } from "../store/cart-slice";
 import "../styles/logoutpopup.css";
 
 const LogoutPopUp = ({ logoutPopUpHandler }) => {
@@ -10,6 +11,7 @@ const LogoutPopUp = ({ logoutPopUpHandler }) => {
   const logout = () => {
     logoutPopUpHandler();
     dispatch(authActions.Logout());
+    dispatch(cartActions.logout());
     localStorage.removeItem("jordan-shop-user");
   };
   return (

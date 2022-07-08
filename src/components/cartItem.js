@@ -11,6 +11,7 @@ import Stars from "../assists/stars.png";
 import Star from "../assists/star.png";
 
 import "../styles/cartItem.css";
+import { Link } from "react-router-dom";
 
 const CartItem = (props) => {
   const { id, name, manifactor, color, stars, quantity, totalPrice } = props;
@@ -40,7 +41,9 @@ const CartItem = (props) => {
 
   return (
     <div className="cart-item-container">
-      <img src={ShoesImage} alt="" className="shoes-preview" />
+      <Link to={name.replaceAll(" ", "-")} className="shoes-preview">
+        <img src={ShoesImage} alt="" />
+      </Link>
       <div>
         <div className="name--model">
           {manifactor}

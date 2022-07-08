@@ -5,15 +5,22 @@
 .home-layout-products {
   width: 95%;
   min-height: 100vh;
-  margin: 2rem 2.5% 0 2.5%;
+  padding: 2rem 2.5% 0 2.5%;
   background-image: url("../assists/product-background.png");
   background-position: center;
   background-size: cover;
-  background-repeat: repeat-y;
   background-attachment: fixed;
 }
 .products-page {
   padding: 7rem 2.5% 0 2.5%;
   min-height: calc(100vh - 7rem);
   background-color: var(--backgroundColor);
+  background: url("../assists/product-background.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.home-layout-best-sales {
+  padding: 2rem 0;
+  min-height: fit-content;
 }

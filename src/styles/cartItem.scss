@@ -8,10 +8,18 @@
   border-radius: 1rem;
   background-color: $darkGreyColor;
   box-shadow: $boxShadow;
-  img.shoes-preview {
+  a {
+    all: unset;
+  }
+  a.shoes-preview {
     height: 80%;
     width: 35%;
     margin: 0 0.5rem;
+    img {
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+    }
   }
   div {
     position: relative;

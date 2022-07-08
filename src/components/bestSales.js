@@ -7,12 +7,14 @@ import "../styles/products.css";
 
 import Product from "./product";
 
-const Products = () => {
+const BestSales = () => {
   const products = useSelector((state) => state.products.filtered);
+
+  const bestSales = products.filter((item) => item.hasOwnProperty("newPrice"));
 
   return (
     <div className="products-container">
-      {products.map((product) => (
+      {bestSales.map((product) => (
         <Product
           id={product.id}
           name={product.name}
@@ -29,4 +31,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default BestSales;

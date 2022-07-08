@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { PRODUCTS } from "./products";
-
 const productsCart = createSlice({
   name: "products",
   initialState: {
-    products: PRODUCTS,
-    filtered: PRODUCTS,
+    products: [],
+    filtered: [],
     changed: false,
   },
   reducers: {
@@ -26,18 +24,21 @@ const productsCart = createSlice({
 
       const existingItem = state.products.find((item) => item.id === ID);
 
-      existingItem.comments.push(newComment);
+      if (existingItem.comments) {
+        existingItem.comments.push(newComment);
+      } else {
+        existingItem.comments = [newComment];
+      }
     },
 
     setProductsList: (state, action) => {
       state.products = action.payload;
+      state.filtered = action.payload;
     },
-    changed: (state, action) => {
-      state.changed = action.payload;
-    },
+
     starHandler: (state, action) => {
-      const StarID = action.payload.id;
-      const star = action.payload.star;
+      const StarID = action.payload;
+
       console.log("Asdfasdfasdfasdfasdf");
       const existingItem = state.products.find((item) => item.id === StarID);
 
@@ -45,15 +46,13 @@ const productsCart = createSlice({
       if (existingItem) {
         var summ = 0;
         existingItem.comments.forEach((item) => {
-          console.log(item.stars);
           summ += item.stars;
         });
-        console.log(summ, "sum");
         const average = summ / existingItem.comments.length;
         const starsAverage = Math.round(average);
         existingItem.stars = starsAverage;
       }
-      console.log("Asdf");
+      state.filtered = state.products;
     },
   },
 });

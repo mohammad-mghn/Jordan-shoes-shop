@@ -6,6 +6,11 @@
   border: 0.1rem solid var(--darkGreyColor);
   background-color: var(--backgroundColor);
   overflow: hidden;
+  text-decoration: none;
+}
+.product a {
+  all: unset;
+  cursor: pointer;
 }
 .home-products-title {
   position: relative;
@@ -56,6 +61,18 @@
 }
 .cost {
   font-size: 1.75rem;
+  display: flex;
+  column-gap: 0.5rem;
+  align-items: center;
+}
+.cost .off {
+  text-decoration: line-through;
+  color: var(--greyColor);
+  font-size: 1.5rem;
+}
+.new-cost {
+  color: var(--whiteColor);
+  font-size: 1.75rem;
 }
 .stars--colors {
   margin-top: 1rem;
@@ -92,11 +109,7 @@
   align-items: center;
 }
 .color {
-  cursor: pointer;
   transition: all 500ms;
-}
-.color:hover {
-  color: var(--whiteColor);
 }
 .color-selected {
   color: var(--redColor);
@@ -111,8 +124,8 @@
   color: var(--redColor);
   font-family: "Goldman";
   font-size: 1.1rem;
-  cursor: pointer;
   transition: all 500ms;
+  cursor: pointer;
 }
 
 .product-button.loading-button {
@@ -195,6 +208,13 @@
     font-size: 3vw;
   }
   .cost {
+    font-size: 6vw;
+    column-gap: 2vw;
+  }
+  .cost .off {
+    font-size: 4vw;
+  }
+  .new-cost {
     font-size: 6vw;
   }
   .stars--colors {

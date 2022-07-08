@@ -8,10 +8,18 @@
   background-color: #202020;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
-.cart-item-container img.shoes-preview {
+.cart-item-container a {
+  all: unset;
+}
+.cart-item-container a.shoes-preview {
   height: 80%;
   width: 35%;
   margin: 0 0.5rem;
+}
+.cart-item-container a.shoes-preview img {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
 }
 .cart-item-container div {
   position: relative;

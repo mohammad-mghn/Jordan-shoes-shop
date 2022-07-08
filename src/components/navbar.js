@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const links = [
     { path: "/", text: "HOME" },
-    { path: "/jumpman-2021-pf", text: "PRODUCTS" },
+    { path: "/products", text: "PRODUCTS" },
     { path: "/man", text: "MAN" },
     { path: "/woman", text: "WOMAN" },
     { path: "/kids", text: "KIDS" },
