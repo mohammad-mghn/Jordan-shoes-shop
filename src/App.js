@@ -124,13 +124,15 @@ function App() {
 
   useEffect(() => {
     const updateUserCart = async () => {
-      await fetch(
-        "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/products.json",
-        {
-          method: "PUT",
-          body: JSON.stringify(productss),
-        }
-      );
+      if (productss !== []) {
+        await fetch(
+          "https://vito-shopping-app-default-rtdb.asia-southeast1.firebasedatabase.app/products.json",
+          {
+            method: "PUT",
+            body: JSON.stringify(productss),
+          }
+        );
+      }
     };
     updateUserCart();
   }, [productss]);
