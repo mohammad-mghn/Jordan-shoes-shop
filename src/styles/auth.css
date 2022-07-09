@@ -120,7 +120,7 @@
 
 @media screen and (max-width: 900px) {
   .auth-main-container {
-    background-image: url("../assists/home-background-mobile.png");
+    background-image: url("../assists/product-background.png");
   }
 }
 @media screen and (max-width: 501px) {
