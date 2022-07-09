@@ -224,7 +224,8 @@
     width: 20vw;
   }
   .colors {
-    font-size: 3vw;
+    font-size: 2.25vw;
+    font-weight: 900;
     display: flex;
     column-gap: 2vw;
     align-items: center;

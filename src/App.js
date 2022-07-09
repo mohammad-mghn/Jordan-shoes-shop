@@ -21,6 +21,7 @@ import "./styles/App.css";
 import ProductPage from "./components/productPage";
 
 import { PRODUCTS } from "./components/productsStore";
+import ContactUs from "./components/contactUs";
 
 function App() {
   const location = useLocation();
@@ -136,10 +137,10 @@ function App() {
 
   const routes = [
     { path: "/", component: <HomeLayout /> },
-    { path: "/products", component: <ProductsLayout /> },
     { path: "/man", component: <ProductsLayout /> },
     { path: "/woman", component: <ProductsLayout /> },
     { path: "/kids", component: <ProductsLayout /> },
+    { path: "/contact", component: <ContactUs /> },
   ];
 
   return (

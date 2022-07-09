@@ -49,8 +49,7 @@ export const PRODUCTS = [
     name: "air jordan iv",
     manifactor: "Jordan",
     stars: 0,
-    price: 85,
-    newPrice: "60",
+    price: 90,
     comments: [],
     colors: ["black", "white"],
     details: [

@@ -13,11 +13,13 @@
 }
 .products-page {
   padding: 7rem 2.5% 0 2.5%;
+  height: 100%;
   min-height: calc(100vh - 7rem);
   background-color: var(--backgroundColor);
   background: url("../assists/product-background.png");
-  background-position: center;
   background-size: cover;
+  background-position: top;
+  background-position: center;
   background-attachment: fixed;
 }
 .home-layout-best-sales {

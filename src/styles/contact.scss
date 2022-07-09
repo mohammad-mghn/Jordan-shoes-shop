@@ -1,0 +1,159 @@
+@import "./variables/variables.scss";
+
+.contact-page {
+  padding-left: 5%;
+  background-image: url("../assists/product-background.png");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.email-section {
+  height: 68%;
+  width: 28rem;
+  border-radius: 1rem;
+  border: 2px solid $darkGreyColor;
+  background-color: $backgroundColor;
+  h2 {
+    margin: 1rem 0 0 1rem;
+    font-size: 1.75rem;
+    color: $redColor;
+  }
+  p {
+    padding: 0.5rem 1rem 1rem 1rem;
+    font-size: 0.8rem;
+    color: $greyColor;
+    margin: 0;
+    text-align: justify;
+  }
+}
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //   background-color: aqua;
+  input,
+  textarea {
+    all: unset;
+    box-sizing: border-box;
+    width: 95%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: start;
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    color: $lightGreyColor;
+    border: 3px solid $darkGreyColor;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: $darkGreyColor;
+  }
+  textarea {
+    width: 95%;
+    height: 10rem;
+    font-size: 1rem;
+  }
+  button {
+    all: unset;
+    width: calc(95% - 6px);
+    height: 2.75rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: $darkGreyColor;
+    border-radius: 0.5rem;
+    border: 3px solid $darkGreyColor;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  button.valid {
+    color: $darkRedColor;
+    border: 3px solid $darkRedColor;
+  }
+}
+.landing-section {
+  width: 34.5rem;
+  height: 34.5rem;
+  box-sizing: border-box;
+  background-image: url("../assists/contact-landing-background.png");
+  background-position: right;
+  background-size: cover;
+}
+@media screen and (max-width: 1000px) {
+  .contact-page {
+    padding: 10rem 0 2rem 0;
+    // background-image: url("../assists/product-background.png");
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    background-color: aqua;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .email-section {
+    width: 90vw;
+    height: 99vw;
+    border-radius: 3vw;
+    h2 {
+      margin: 2vw 0 0 2vw;
+      font-size: 4.5vw;
+    }
+    p {
+      padding: 1vw 4vw 2vw 4vw;
+      font-size: 2.25vw;
+    }
+  }
+  .form-section {
+    input,
+    textarea {
+      all: unset;
+      box-sizing: border-box;
+      width: 95%;
+      padding: 1.5vw;
+      margin-bottom: 2vw;
+      text-align: start;
+      font-size: 2.75vw;
+      border-radius: 0.5rem;
+      color: $lightGreyColor;
+      border: 3px solid $darkGreyColor;
+    }
+    textarea {
+      height: 40vw;
+      font-size: 2.5vw;
+    }
+    button {
+      all: unset;
+      width: calc(95% - 6px);
+      height: 7vw;
+      margin-bottom: 0;
+      font-size: 2.75vw;
+      color: $darkGreyColor;
+      border-radius: 0.5rem;
+      border: 3px solid $darkGreyColor;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button.valid {
+      color: $darkRedColor;
+      border: 3px solid $darkRedColor;
+    }
+  }
+  .landing-section {
+    width: 100vw;
+    height: 100vw;
+    margin-right: -0%;
+    box-sizing: border-box;
+    background-image: url("../assists/contact-landing-background.png");
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
